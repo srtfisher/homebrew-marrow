@@ -15,17 +15,21 @@ cask "marrow" do
     strategy :github_latest
   end
 
+  depends_on macos: :ventura
+
   app "marrow.app"
 
   # Not notarized, so Gatekeeper refuses it while the quarantine flag is set.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/marrow.app"]
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:           ["-drs", "com.apple.quarantine", "{{appdir}}/marrow.app"],
+        writable_paths: ["marrow.app"],
+        writable_base:  :appdir
   end
+
+  zap trash: "~/Library/Application Support/marrow"
 
   caveats <<~EOS
     marrow needs gh signed in, and Claude Code installed and signed in for reviews.
   EOS
-
-  zap trash: "~/Library/Application Support/marrow"
 end
