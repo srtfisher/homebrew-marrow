@@ -1,9 +1,9 @@
 cask "marrow" do
   arch arm: "arm64", intel: "x64"
 
-  version "0.4.3"
-  sha256 arm:   "a401ef1002135eda6e15f4616331f51f05cd525c6c78ae00ffc473943f295a37",
-         intel: "9e18df02a68f5d189075a0978e15ce41cad272b70bc821c41946633e4caa34ee"
+  version "0.4.4"
+  sha256 arm:   "386497476a9c030bb2e161b042ac31ca0bfde659049c84f66d00055e3d27d2dd",
+         intel: "e409455e77f3dfd1d9ef061b3af5b3aa1d6398afa520076cd9dac4e482fe8e5d"
 
   url "https://github.com/srtfisher/marrow-review/releases/download/v#{version}/marrow-#{version}-mac-#{arch}.zip"
   name "marrow"
